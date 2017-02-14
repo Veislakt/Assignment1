@@ -38,6 +38,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblSampling = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnHelp = new System.Windows.Forms.Button();
+            this.txtLogged = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSampling
@@ -62,6 +65,7 @@
             // 
             // txtNextSampleTime
             // 
+            this.txtNextSampleTime.Enabled = false;
             this.txtNextSampleTime.Location = new System.Drawing.Point(13, 51);
             this.txtNextSampleTime.Name = "txtNextSampleTime";
             this.txtNextSampleTime.Size = new System.Drawing.Size(100, 20);
@@ -69,6 +73,7 @@
             // 
             // txtNextLoggingTime
             // 
+            this.txtNextLoggingTime.Enabled = false;
             this.txtNextLoggingTime.Location = new System.Drawing.Point(13, 154);
             this.txtNextLoggingTime.Name = "txtNextLoggingTime";
             this.txtNextLoggingTime.Size = new System.Drawing.Size(100, 20);
@@ -76,6 +81,7 @@
             // 
             // txtSensorValues
             // 
+            this.txtSensorValues.Enabled = false;
             this.txtSensorValues.Location = new System.Drawing.Point(159, 50);
             this.txtSensorValues.Multiline = true;
             this.txtSensorValues.Name = "txtSensorValues";
@@ -130,11 +136,41 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Sensor Values:";
             // 
+            // btnHelp
+            // 
+            this.btnHelp.Location = new System.Drawing.Point(13, 265);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(75, 23);
+            this.btnHelp.TabIndex = 10;
+            this.btnHelp.Text = "About";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            // 
+            // txtLogged
+            // 
+            this.txtLogged.Enabled = false;
+            this.txtLogged.Location = new System.Drawing.Point(13, 239);
+            this.txtLogged.Name = "txtLogged";
+            this.txtLogged.Size = new System.Drawing.Size(100, 20);
+            this.txtLogged.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(14, 220);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(137, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Number of datasets logged:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 224);
+            this.ClientSize = new System.Drawing.Size(284, 300);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtLogged);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblSampling);
             this.Controls.Add(this.label3);
@@ -164,6 +200,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblSampling;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.TextBox txtLogged;
+        private System.Windows.Forms.Label label5;
     }
 }
 
