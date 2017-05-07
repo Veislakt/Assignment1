@@ -39,6 +39,7 @@ namespace TestApplicationOPC
             dataSocket.Connect(opcUrl, AccessMode.Read);
             dataSocket.Update();
             quality = dataSocket.Data.Attributes["Quality"].Value.ToString();
+            dataSocket.Disconnect();
             return quality;
         }
 
@@ -54,7 +55,22 @@ namespace TestApplicationOPC
             dataSocket.Connect(opcUrl, AccessMode.Read);
             dataSocket.Update();
             timeStamp = Convert.ToDateTime(dataSocket.Data.Attributes["TimeStamp"].Value.ToString());
+            dataSocket.Disconnect();
             return timeStamp;
+        }
+
+        public void SetValue(string Variable, double Value)
+        {
+            string opcUrl = opcUrlBase + Variable;
+            DataSocket dataSocket = new DataSocket();
+            if (dataSocket.IsConnected)
+            {
+                dataSocket.Disconnect();
+            }
+            dataSocket.Connect(opcUrl, AccessMode.Write);
+            dataSocket.Data.Value = Value;
+            dataSocket.Update();
+            dataSocket.Disconnect();
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NationalInstruments.Net;
 using NationalInstruments;
+using System.Threading;
 
 namespace TestApplicationOPC
 {
@@ -12,6 +13,13 @@ namespace TestApplicationOPC
     {
         static void Main(string[] args)
         {
+            Timer t = new Timer(TimerCallback, null, 0, 1000);
+            Console.ReadLine();
+        }
+
+        private static void TimerCallback(Object o)
+        {
+            Console.WriteLine("In TimerCallback: " + DateTime.Now.ToString());
         }
     }
 }
