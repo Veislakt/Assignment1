@@ -43,6 +43,22 @@ namespace TestApplicationOPC
             return quality;
         }
 
+        public string GetStatus(string Variable)
+        {
+            string status;
+            string opcUrl = opcUrlBase + Variable;
+            DataSocket dataSocket = new DataSocket();
+            if (dataSocket.IsConnected)
+            {
+                dataSocket.Disconnect();
+            }
+            dataSocket.Connect(opcUrl, AccessMode.Read);
+            dataSocket.Update();
+            status = dataSocket.Data.Attributes["Status"].Value.ToString();
+            dataSocket.Disconnect();
+            return status;
+        }
+
         public DateTime GetTimeStamp(string Variable)
         {
             DateTime timeStamp;
