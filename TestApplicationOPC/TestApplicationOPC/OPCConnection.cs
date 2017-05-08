@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using NationalInstruments.Net;
 using NationalInstruments;
 
-namespace TestApplicationOPC
+namespace DataLoggingApp
 {
     class OPCConnection
     {

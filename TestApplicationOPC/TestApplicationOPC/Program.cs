@@ -7,7 +7,7 @@ using NationalInstruments.Net;
 using NationalInstruments;
 using System.Threading;
 
-namespace TestApplicationOPC
+namespace DataLoggingApp
 {
     class Program
     {

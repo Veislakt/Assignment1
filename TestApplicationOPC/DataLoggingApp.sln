@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApplicationOPC", "TestApplicationOPC\TestApplicationOPC.csproj", "{AB7CA9DA-A0DE-4663-9357-C1CB8C228144}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLoggingApp", "TestApplicationOPC\DataLoggingApp.csproj", "{AB7CA9DA-A0DE-4663-9357-C1CB8C228144}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8AA73649-10A1-4CEE-A2A6-4B0E5BC0C14F}"
 EndProject
