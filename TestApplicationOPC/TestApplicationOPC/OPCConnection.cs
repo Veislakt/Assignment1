@@ -10,7 +10,7 @@ namespace TestApplicationOPC
 {
     class OPCConnection
     {
-        string opcUrlBase = "opc://localhost/Matrikon.OPC.Simulation/Bucket Brigade.";
+        string opcUrlBase = @"opc://localhost/Matrikon.OPC.Simulation.1/Bucket Brigade.";
 
         public double GetValue(string Variable)
         {
@@ -70,7 +70,7 @@ namespace TestApplicationOPC
             }
             dataSocket.Connect(opcUrl, AccessMode.Read);
             dataSocket.Update();
-            timeStamp = Convert.ToDateTime(dataSocket.Data.Attributes["TimeStamp"].Value.ToString());
+            timeStamp = Convert.ToDateTime(dataSocket.Data.Attributes["Timestamp"].Value.ToString());
             dataSocket.Disconnect();
             return timeStamp;
         }
