@@ -43,10 +43,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cboTurningDir = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtSelHole = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtSelPark = new System.Windows.Forms.TextBox();
             this.btnAddDisc = new System.Windows.Forms.Button();
             this.btnDeleteDisc = new System.Windows.Forms.Button();
             this.txtSelProducentStats = new System.Windows.Forms.TextBox();
@@ -61,6 +57,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtSelName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtSelHole = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtSelPark = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnCommitNewThrow = new System.Windows.Forms.Button();
             this.txtNewThrowQuality = new System.Windows.Forms.TextBox();
@@ -71,6 +71,13 @@
             this.txtNewDistance = new System.Windows.Forms.TextBox();
             this.txtNewThrowType = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.turningDir = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.producent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.avgAccuracy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.avgQuality = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiscData)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -82,16 +89,24 @@
             this.dgvDiscData.AllowUserToAddRows = false;
             this.dgvDiscData.AllowUserToDeleteRows = false;
             this.dgvDiscData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDiscData.Location = new System.Drawing.Point(193, 39);
+            this.dgvDiscData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.type,
+            this.turningDir,
+            this.colour,
+            this.producent,
+            this.name,
+            this.avgAccuracy,
+            this.avgQuality});
+            this.dgvDiscData.Location = new System.Drawing.Point(190, 39);
             this.dgvDiscData.Name = "dgvDiscData";
             this.dgvDiscData.ReadOnly = true;
-            this.dgvDiscData.Size = new System.Drawing.Size(345, 244);
+            this.dgvDiscData.Size = new System.Drawing.Size(459, 244);
             this.dgvDiscData.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(190, 23);
+            this.label1.Location = new System.Drawing.Point(187, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 1;
@@ -160,6 +175,7 @@
             this.btnLoadData.TabIndex = 11;
             this.btnLoadData.Text = "Load Data";
             this.btnLoadData.UseVisualStyleBackColor = true;
+            this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
             // 
             // cboThrowType
             // 
@@ -214,10 +230,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.txtSelHole);
-            this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.txtSelPark);
             this.groupBox2.Controls.Add(this.btnAddDisc);
             this.groupBox2.Controls.Add(this.btnDeleteDisc);
             this.groupBox2.Controls.Add(this.txtSelProducentStats);
@@ -232,44 +244,12 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtSelName);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(193, 303);
+            this.groupBox2.Location = new System.Drawing.Point(305, 303);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(344, 225);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Disc";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(265, 182);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(29, 13);
-            this.label18.TabIndex = 17;
-            this.label18.Text = "Hole";
-            // 
-            // txtSelHole
-            // 
-            this.txtSelHole.Location = new System.Drawing.Point(268, 198);
-            this.txtSelHole.Name = "txtSelHole";
-            this.txtSelHole.Size = new System.Drawing.Size(70, 20);
-            this.txtSelHole.TabIndex = 16;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(166, 183);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(29, 13);
-            this.label17.TabIndex = 15;
-            this.label17.Text = "Park";
-            // 
-            // txtSelPark
-            // 
-            this.txtSelPark.Location = new System.Drawing.Point(166, 199);
-            this.txtSelPark.Name = "txtSelPark";
-            this.txtSelPark.Size = new System.Drawing.Size(70, 20);
-            this.txtSelPark.TabIndex = 14;
             // 
             // btnAddDisc
             // 
@@ -279,6 +259,7 @@
             this.btnAddDisc.TabIndex = 13;
             this.btnAddDisc.Text = "Add Disc";
             this.btnAddDisc.UseVisualStyleBackColor = true;
+            this.btnAddDisc.Click += new System.EventHandler(this.btnAddDisc_Click);
             // 
             // btnDeleteDisc
             // 
@@ -288,6 +269,7 @@
             this.btnDeleteDisc.TabIndex = 12;
             this.btnDeleteDisc.Text = "Delete Disc";
             this.btnDeleteDisc.UseVisualStyleBackColor = true;
+            this.btnDeleteDisc.Click += new System.EventHandler(this.btnDeleteDisc_Click);
             // 
             // txtSelProducentStats
             // 
@@ -386,10 +368,46 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Name";
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(147, 103);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(29, 13);
+            this.label18.TabIndex = 17;
+            this.label18.Text = "Hole";
+            // 
+            // txtSelHole
+            // 
+            this.txtSelHole.Location = new System.Drawing.Point(150, 120);
+            this.txtSelHole.Name = "txtSelHole";
+            this.txtSelHole.Size = new System.Drawing.Size(121, 20);
+            this.txtSelHole.TabIndex = 16;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(147, 60);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(29, 13);
+            this.label17.TabIndex = 15;
+            this.label17.Text = "Park";
+            // 
+            // txtSelPark
+            // 
+            this.txtSelPark.Location = new System.Drawing.Point(150, 76);
+            this.txtSelPark.Name = "txtSelPark";
+            this.txtSelPark.Size = new System.Drawing.Size(121, 20);
+            this.txtSelPark.TabIndex = 14;
+            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtSelHole);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.txtSelPark);
             this.groupBox3.Controls.Add(this.btnCommitNewThrow);
             this.groupBox3.Controls.Add(this.txtNewThrowQuality);
+            this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.txtNewAccuracy);
             this.groupBox3.Controls.Add(this.label14);
@@ -399,23 +417,24 @@
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Location = new System.Drawing.Point(8, 303);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(167, 225);
+            this.groupBox3.Size = new System.Drawing.Size(280, 225);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "New Throw";
             // 
             // btnCommitNewThrow
             // 
-            this.btnCommitNewThrow.Location = new System.Drawing.Point(4, 196);
+            this.btnCommitNewThrow.Location = new System.Drawing.Point(4, 156);
             this.btnCommitNewThrow.Name = "btnCommitNewThrow";
             this.btnCommitNewThrow.Size = new System.Drawing.Size(121, 23);
             this.btnCommitNewThrow.TabIndex = 12;
             this.btnCommitNewThrow.Text = "Commit new throw";
             this.btnCommitNewThrow.UseVisualStyleBackColor = true;
+            this.btnCommitNewThrow.Click += new System.EventHandler(this.btnCommitNewThrow_Click);
             // 
             // txtNewThrowQuality
             // 
-            this.txtNewThrowQuality.Location = new System.Drawing.Point(4, 160);
+            this.txtNewThrowQuality.Location = new System.Drawing.Point(150, 36);
             this.txtNewThrowQuality.Name = "txtNewThrowQuality";
             this.txtNewThrowQuality.Size = new System.Drawing.Size(121, 20);
             this.txtNewThrowQuality.TabIndex = 7;
@@ -423,7 +442,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 143);
+            this.label15.Location = new System.Drawing.Point(147, 20);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(72, 13);
             this.label15.TabIndex = 6;
@@ -477,11 +496,53 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Throw Type";
             // 
+            // type
+            // 
+            this.type.HeaderText = "Type";
+            this.type.Name = "type";
+            this.type.ReadOnly = true;
+            // 
+            // turningDir
+            // 
+            this.turningDir.HeaderText = "Turning Direction";
+            this.turningDir.Name = "turningDir";
+            this.turningDir.ReadOnly = true;
+            // 
+            // colour
+            // 
+            this.colour.HeaderText = "Colour";
+            this.colour.Name = "colour";
+            this.colour.ReadOnly = true;
+            // 
+            // producent
+            // 
+            this.producent.HeaderText = "Producent";
+            this.producent.Name = "producent";
+            this.producent.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Name";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // avgAccuracy
+            // 
+            this.avgAccuracy.HeaderText = "Average Accuracy";
+            this.avgAccuracy.Name = "avgAccuracy";
+            this.avgAccuracy.ReadOnly = true;
+            // 
+            // avgQuality
+            // 
+            this.avgQuality.HeaderText = "Average Quality";
+            this.avgQuality.Name = "avgQuality";
+            this.avgQuality.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 534);
+            this.ClientSize = new System.Drawing.Size(659, 534);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -546,6 +607,13 @@
         private System.Windows.Forms.TextBox txtSelHole;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtSelPark;
+        private System.Windows.Forms.DataGridViewTextBoxColumn type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn turningDir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colour;
+        private System.Windows.Forms.DataGridViewTextBoxColumn producent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn avgAccuracy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn avgQuality;
     }
 }
 
