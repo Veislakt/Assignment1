@@ -11,7 +11,7 @@ namespace AlarmApplication
     static class DatabaseCommunication
     {
         //connection string for testing database. 
-        static string connectionString = @"Data Source=VEISLAKT\SCHOOL;Initial Catalog=DiscGolfTrackerDB;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        static string connectionString = @"Data Source=VEISLAKT\SCHOOL;Initial Catalog=ScadaLab;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         //Faulty conncetion string for testing purposes. Uncomment only for testing. 
         //static string connectionString = @"Data Source=VEISLAKT\SCHOOL2;Initial Catalog=DiscGolfTrackerDB;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
@@ -34,14 +34,17 @@ namespace AlarmApplication
                     while (reader.Read())
                     {
                         DBAlarm alarmRow = new DBAlarm();
-                        alarmRow.ThrowId = Convert.ToInt32(reader["ThrowId"].ToString());
-                        alarmRow.DiscId = Convert.ToInt32(reader["DiscId"].ToString());
-                        alarmRow.ThrowType = reader["ThrowType"].ToString();
-                        alarmRow.Distance = Convert.ToInt32(reader["Distance"].ToString());
-                        alarmRow.Accuracy = Convert.ToInt32(reader["Accuracy"].ToString());
-                        alarmRow.ThrowQuality = Convert.ToInt32(reader["ThrowQuality"].ToString());
-                        alarmRow.Park = reader["Park"].ToString();
-                        alarmRow.Hole = Convert.ToInt32(reader["Hole"].ToString());
+                        alarmRow.ActivationTime = Convert.ToDateTime(reader["ActivationTime"].ToString());
+                        alarmRow.AcknowledgedTime = Convert.ToDateTime(reader["AcknowledgedTime"].ToString());
+                        alarmRow.AcknowledgedBy = reader["AcknowledgedBy"].ToString();
+                        alarmRow.AlarmStatus = reader["AlarmStatus"].ToString();
+                        alarmRow.Description = reader["Description"].ToString();
+                        alarmRow.Severity = Convert.ToInt32(reader["Severity"].ToString());
+                        alarmRow.AlarmType = reader["AlarmType"].ToString();
+                        alarmRow.AlarmLimit = Convert.ToDouble(reader["AlarmLimit"].ToString());
+                        alarmRow.AlarmAudioVisual = reader["AlarmAudioVisual"].ToString();
+                        alarmRow.TagName = reader["TagName"].ToString();
+                        alarmRow.Value = Convert.ToDouble(reader["Value"].ToString());
                         throwData.Add(alarmRow);
                     }
                     connection.Close();
