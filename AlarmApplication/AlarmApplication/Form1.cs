@@ -46,5 +46,28 @@ namespace AlarmApplication
         {
 
         }
+
+        private void FillAlarmList() //Will require List of Disc objects and statistics list/array
+        {
+            //Use foreach structure to loop through the Disc Objects
+            //Placeholder data for filling tableview
+            string type = "ActivationTime";
+            string turningDir = "TurningDirection";
+            string colour = "Colour";
+            string producent = "Producent";
+            string name = "Name";
+            string avgAccuracy = "Average accuracy";
+            string avgQuality = "Average quality";
+            DataGridViewRow row = new DataGridViewRow();
+            row.CreateCells(dgvPending);
+            row.Cells[0].Value = type;
+            row.Cells[1].Value = turningDir;
+            row.Cells[2].Value = colour;
+            row.Cells[3].Value = producent;
+            row.Cells[4].Value = name;
+            row.Cells[5].Value = avgAccuracy;
+            row.Cells[6].Value = avgQuality;
+            dgvPending.Rows.Add(row);
+        }
     }
 }
