@@ -8,6 +8,7 @@ namespace AlarmApplication
 {
     class DBAlarm
     {
+        public int AlarmId { get; set; }
         public DateTime ActivationTime { get; set; }
         public DateTime AcknowledgedTime { get; set; }
         public string AcknowledgedBy { get; set; }
