@@ -45,7 +45,7 @@ namespace AlarmApplication
                         alarmRow.AlarmLimit = Convert.ToDouble(reader["AlarmLimit"].ToString());
                         alarmRow.AlarmAudioVisual = reader["AlarmAudioVisual"].ToString();
                         alarmRow.TagName = reader["TagName"].ToString();
-                        alarmRow.Value = Convert.ToDouble(reader["Value"].ToString());
+                        //alarmRow.Value = Convert.ToDouble(reader["Value"].ToString());
                         DBAlarmData.Add(alarmRow);
                     }
                     connection.Close();

@@ -19,6 +19,6 @@ namespace AlarmApplication
         public double AlarmLimit { get; set; }
         public string AlarmAudioVisual { get; set; }
         public string TagName { get; set; }
-        public double Value { get; set; }
+        //public double Value { get; set; }
     }
 }

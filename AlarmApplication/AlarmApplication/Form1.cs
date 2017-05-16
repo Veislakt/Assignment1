@@ -41,11 +41,12 @@ namespace AlarmApplication
         private void dgvPending_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             int severity = Convert.ToInt32(dgvPending.Rows[e.RowIndex].Cells[6].Value);
-            if (severity >= 4)
+            string audioVisual = dgvPending.Rows[e.RowIndex].Cells[9].Value.ToString();
+            if (severity >= 4 | audioVisual.Contains("Red"))
             {
                 dgvPending.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
             }
-            else if (severity >= 2)
+            else if (severity >= 2 | audioVisual.Contains("Orange"))
             {
                 dgvPending.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Orange;
             }
@@ -60,27 +61,27 @@ namespace AlarmApplication
 
         }
 
-        private void FillAlarmList(List<DBAlarm> alarmList) //Will require List of alarm objects
-        {
-            //Use foreach structure to loop through the Disc Objects
-            //Placeholder data for filling tableview
-            foreach (DBAlarm alarm in alarmList)
-            {
-                DataGridViewRow row = new DataGridViewRow();
-                row.CreateCells(dgvPending);
-                row.Cells[0].Value = alarm.ActivationTime;
-                row.Cells[1].Value = alarm.AcknowledgedTime;
-                row.Cells[2].Value = alarm.AcknowledgedBy;
-                row.Cells[3].Value = alarm.AlarmStatus;
-                row.Cells[4].Value = alarm.Description;
-                row.Cells[5].Value = alarm.Severity;
-                row.Cells[6].Value = alarm.AlarmType;
-                row.Cells[7].Value = alarm.AlarmLimit;
-                row.Cells[8].Value = alarm.TagName;
-                row.Cells[9].Value = alarm.Value;
-                dgvPending.Rows.Add(row);
-            }
-        }
+        //private void FillAlarmList(List<DBAlarm> alarmList) //Will require List of alarm objects
+        //{
+        //    //Use foreach structure to loop through the Disc Objects
+        //    //Placeholder data for filling tableview
+        //    foreach (DBAlarm alarm in alarmList)
+        //    {
+        //        DataGridViewRow row = new DataGridViewRow();
+        //        row.CreateCells(dgvPending);
+        //        row.Cells[0].Value = alarm.ActivationTime;
+        //        row.Cells[1].Value = alarm.AcknowledgedTime;
+        //        row.Cells[2].Value = alarm.AcknowledgedBy;
+        //        row.Cells[3].Value = alarm.AlarmStatus;
+        //        row.Cells[4].Value = alarm.Description;
+        //        row.Cells[5].Value = alarm.Severity;
+        //        row.Cells[6].Value = alarm.AlarmType;
+        //        row.Cells[7].Value = alarm.AlarmLimit;
+        //        row.Cells[8].Value = alarm.TagName;
+        //        //row.Cells[9].Value = alarm.Value;
+        //        dgvPending.Rows.Add(row);
+        //    }
+        //}
 
         private void tmrRefresh_Tick(object sender, EventArgs e)
         {
