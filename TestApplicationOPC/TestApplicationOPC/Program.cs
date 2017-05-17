@@ -26,7 +26,7 @@ namespace DataLoggingApp
         {
             double OPCValue;
             DateTime OPCTime;
-            string OPCStatus;
+            //string OPCStatus;
             string OPCQuality;
             string OPCVariable = "Real4";
             string SensorTag = "TT-01";
@@ -40,7 +40,6 @@ namespace DataLoggingApp
                 DatabaseConnection.InsertMeasurement(OPCValue, OPCTime, "Not Available", OPCQuality, SensorTag);
                 lastOPCTime = OPCTime;
             }
-            //Console.WriteLine("In TimerCallback: " + DateTime.Now.ToString());
         }
     }
 }

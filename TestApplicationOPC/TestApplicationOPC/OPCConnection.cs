@@ -12,12 +12,17 @@ namespace DataLoggingApp
     {
         string opcUrlBase = @"opc://localhost/Matrikon.OPC.Simulation.1/Bucket Brigade.";
 
+        /// <summary>
+        /// Gets the value from the variable
+        /// </summary>
+        /// <param name="Variable">OPC Variable name</param>
+        /// <returns>Value of the OPC variable</returns>
         public double GetValue(string Variable)
         {
             double value;
             string opcUrl = opcUrlBase + Variable;
             DataSocket dataSocket = new DataSocket();
-            if (dataSocket.IsConnected)
+            if (dataSocket.IsConnected) //Disconnects any previous connections before connecting;
             {
                 dataSocket.Disconnect();
             }
@@ -27,28 +32,38 @@ namespace DataLoggingApp
             return value;
         }
 
+        /// <summary>
+        /// Gets the quality parameter from the variable
+        /// </summary>
+        /// <param name="Variable">OPC Variable name</param>
+        /// <returns>Quality of the OPC variable</returns>
         public string GetQuality(string Variable)
         {
             string quality;
             string opcUrl = opcUrlBase + Variable;
             DataSocket dataSocket = new DataSocket();
-            if (dataSocket.IsConnected)
+            if (dataSocket.IsConnected) //Disconnects any previous connections before connecting;
             {
                 dataSocket.Disconnect();
             }
             dataSocket.Connect(opcUrl, AccessMode.Read);
             dataSocket.Update();
-            quality = dataSocket.Data.Attributes["Quality"].Value.ToString();
+            quality = dataSocket.Data.Attributes["Quality"].Value.ToString(); //Reads the Quality 
             dataSocket.Disconnect();
             return quality;
         }
 
+        /// <summary>
+        /// NB! Does not work!
+        /// </summary>
+        /// <param name="Variable">OPC Variable name</param>
+        /// <returns>Status of the OPC Variable</returns>
         public string GetStatus(string Variable)
         {
             string status;
             string opcUrl = opcUrlBase + Variable;
             DataSocket dataSocket = new DataSocket();
-            if (dataSocket.IsConnected)
+            if (dataSocket.IsConnected) //Disconnects any previous connections before connecting;
             {
                 dataSocket.Disconnect();
             }
@@ -59,6 +74,11 @@ namespace DataLoggingApp
             return status;
         }
 
+        /// <summary>
+        /// Gets the timestamp from the Variable, showing when the Variable was last written to. 
+        /// </summary>
+        /// <param name="Variable">OPC Variable name</param>
+        /// <returns>Timestamp of the OPC Variable</returns>
         public DateTime GetTimeStamp(string Variable)
         {
             DateTime timeStamp;
@@ -75,6 +95,11 @@ namespace DataLoggingApp
             return timeStamp;
         }
 
+        /// <summary>
+        /// Writes a value to the OPC Variable
+        /// </summary>
+        /// <param name="Variable">OPC Variable name</param>
+        /// <param name="Value">New value for the OPC Variable</param>
         public void SetValue(string Variable, double Value)
         {
             string opcUrl = opcUrlBase + Variable;

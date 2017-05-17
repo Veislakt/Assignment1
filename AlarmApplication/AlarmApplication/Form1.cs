@@ -16,19 +16,8 @@ namespace AlarmApplication
         public Form1()
         {
             InitializeComponent();
-            ////Dummy data generation starts
-            //List<Alarm> alarmList = new List<Alarm>();
-            //Alarm alarm1 = new Alarm(1, 1, DateTime.Now, 1, "New", 5);
-            //Alarm alarm2 = new Alarm(2, 1, DateTime.Now.AddHours(-1), 2, "Acknowledged", 3);
-            //alarm2.AcknowledgedTime = DateTime.Now.AddMinutes(-15);
-            //alarm2.AcknowledgedBy = "MH";
-            //Alarm alarm3 = new Alarm(3, 1, DateTime.Now.AddHours(-2), 3, "New", 1);
-            //Alarm alarm4 = new Alarm(4, 1, DateTime.Now.AddMinutes(-30), 4, "Dismissed", 4);
-            //alarmList.Add(alarm1);
-            //alarmList.Add(alarm2);
-            //alarmList.Add(alarm3);
-            //alarmList.Add(alarm4);
-            ////Dummy data generation ends
+            string connectionString = @"Data Source=VEISLAKT\SCHOOL;Initial Catalog=ScadaLab;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            DatabaseCommunication.connectionString = connectionString;
             alarmList = new List<DBAlarm>();
             alarmList = DatabaseCommunication.GetAlarmData();
             alarmList = alarmList.OrderByDescending(o => o.Severity).ToList();
@@ -61,28 +50,6 @@ namespace AlarmApplication
 
         }
 
-        //private void FillAlarmList(List<DBAlarm> alarmList) //Will require List of alarm objects
-        //{
-        //    //Use foreach structure to loop through the Disc Objects
-        //    //Placeholder data for filling tableview
-        //    foreach (DBAlarm alarm in alarmList)
-        //    {
-        //        DataGridViewRow row = new DataGridViewRow();
-        //        row.CreateCells(dgvPending);
-        //        row.Cells[0].Value = alarm.ActivationTime;
-        //        row.Cells[1].Value = alarm.AcknowledgedTime;
-        //        row.Cells[2].Value = alarm.AcknowledgedBy;
-        //        row.Cells[3].Value = alarm.AlarmStatus;
-        //        row.Cells[4].Value = alarm.Description;
-        //        row.Cells[5].Value = alarm.Severity;
-        //        row.Cells[6].Value = alarm.AlarmType;
-        //        row.Cells[7].Value = alarm.AlarmLimit;
-        //        row.Cells[8].Value = alarm.TagName;
-        //        //row.Cells[9].Value = alarm.Value;
-        //        dgvPending.Rows.Add(row);
-        //    }
-        //}
-
         private void tmrRefresh_Tick(object sender, EventArgs e)
         {
             List<DBAlarm> newAlarmList = new List<DBAlarm>();
@@ -97,6 +64,12 @@ namespace AlarmApplication
             }
         }
 
+        /// <summary>
+        /// Checks if each list has an equivalent row with the same alarmId and alarm status in the other list
+        /// </summary>
+        /// <param name="alarmList1">Old alarm list</param>
+        /// <param name="alarmList2">New alarm list</param>
+        /// <returns>returns true if the lists are equal</returns>
         private bool CheckAlarmListsEquality(List<DBAlarm> alarmList1, List<DBAlarm> alarmList2)
         {
             bool allExists = true;
@@ -133,12 +106,12 @@ namespace AlarmApplication
             }
             return allExists;
         }
-
+        
         private void btnAcknowledgeAlarm_Click(object sender, EventArgs e)
         {
-            if (dgvPending.SelectedCells.Count > 0)
+            if (dgvPending.SelectedCells.Count > 0) //No cell selected
             {
-                if (cboOperator.SelectedItem == null)
+                if (cboOperator.SelectedItem == null) //No operator selected
                 {
                     MessageBox.Show("Please select an operator before acknowledging an alarm");
                 }

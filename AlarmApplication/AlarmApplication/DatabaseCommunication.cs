@@ -11,7 +11,7 @@ namespace AlarmApplication
     static class DatabaseCommunication
     {
         //connection string for testing database. 
-        static string connectionString = @"Data Source=VEISLAKT\SCHOOL;Initial Catalog=ScadaLab;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        public static string connectionString { get; set; }
         static string errorInfo = "";
 
         static public List<DBAlarm> GetAlarmData()
